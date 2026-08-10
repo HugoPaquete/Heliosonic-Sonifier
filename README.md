@@ -22,6 +22,27 @@
   <img src="https://img.shields.io/badge/docs-8%20files-informational.svg" alt="Docs">
 </p>
 
+## Academic Context
+
+The **Heliosonic Sonifier** is a research-creation instrument developed within the
+project ***AI as Catalyst: Transformative Impacts on Digital Performance,
+Computational Music, and Cultural Creativity***
+([FCT 2024.09158.CEECIND](https://www.inetmd.pt/projetos-inet/ai-as-catalyst-impactos-transformadores-na-performance-digital-musica-computacional-e-criatividade-cultural/),
+2026–2029), of which **Hugo Paquete** is Principal Investigator.
+
+The project's central thesis is that **AI functions as a catalyst** — not a
+replacement — for human creativity, transforming digital performance,
+computational music, and cultural creativity. The Heliosonic Sonifier
+operationalizes this thesis by positioning AI as an **autonomous co-agent**
+that *resonates* with environmental data rather than merely representing it.
+
+### Research Goals Addressed
+
+| AI as Catalyst Goal | Heliosonic Contribution |
+|---------------------|--------------------------|
+| AI transforming digital performance | Real-time human–AI co-performance via joystick, hardware controllers, and autonomous AI adaptation |
+| AI transforming computational music | Generative melody (3rd-order Markov + genetic algorithms), RL-driven parameter adaptation |
+| AI transforming cultural creativity | Scientific metaphors (helioseismology, black holes, quantum mechanics) as compositional constraints |
 
 ---
 
@@ -45,6 +66,15 @@ creativity, serving as a platform for live performance and data exploration.
 | **Output** | MIDI + CC · 16 channels · 128-note polyphony |
 | **Platform** | Windows 10/11 |
 | **Funding** | FCT 2024.09158.CEECIND · CEEC-FCT 2026-HELIOSONIC |
+
+### Key Innovations
+
+- **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
+- **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate (2–60%)
+- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition (metaphor)
+- **Black-hole data mutation** — artistic metaphor for data transformation
+- **Helioseismic modulation** — p-modes (3 mHz, verified) and g-modes (theoretical)
+- **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
 
 ---
 
@@ -75,11 +105,6 @@ dive into any subsystem.
 - **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
 - **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
 - **Custom hardware controllers** — 16-key, 12-key, and joystick
-
----
-
-## Architecture at a glance
-
 
 ---
 
@@ -274,7 +299,7 @@ Where:
 
 ### Why This Matters
 
-The Heliosonic Sonifier is an **artistic and educational tool** — not a scientific instrument. Its value lies not in simulating physics but in:
+The system is an **artistic and educational tool**, not a scientific simulation.
 
 1. **Operationalizing scientific concepts as compositional constraints** — generating musical material through algorithmic resonances
 2. **Cultivating meta-listening** — a reflexive auditory practice that interrogates the conditions under which listening is mediated, governed, and automated
@@ -308,37 +333,66 @@ Developed with **INET-md / University of Aveiro**, in collaboration with:
 Absonus Lab · Planetário do Porto – CCV · OTTOsonics
 
 
-### Citation
+## Citation
 
+If you use this work, please cite it (see [`CITATION.cff`](CITATION.cff)):
+
+```bibtex
 @software{Paquete2026Heliosonic,
   author  = {Hugo Paquete and DeepSeek AI},
   title   = {Heliosonic Sonifier: NOAA Solar Wind Sonification},
   year    = {2026},
-  version = {18.4},
-  url     = {https://github.com/hugopaquete/Heliosonic-Sonifier},
-  note    = {Funded by CEEC-FCT grant No. 2026-HELIOSONIC}
+  version = {18.5},
+  url     = {https://github.com/hugopaquete/heliosonic},
+  note    = {Funded by FCT (2024.09158.CEECIND) - AI as Catalyst}
 }
+```
+
+---
+
+## Author & Affiliations
+
+**Hugo Paquete** — Principal Investigator
+
+| Profile | Link |
+|---------|------|
+| ORCID | [0000-0002-5844-3678](https://orcid.org/0000-0002-5844-3678) |
+| Ciência Vitae | [C818-547A-287C](https://www.cienciavitae.pt/portal/C818-547A-287C) |
+| Google Scholar | [Profile](https://scholar.google.com/citations?user=knPFLG4AAAAJ) |
+| ResearchGate | [Profile](https://www.researchgate.net/profile/Hugo-Paquete) |
+| Website | [hugopaquete.com](https://hugopaquete.com/) |
+
+**Affiliations**
+
+- [INET-md, University of Aveiro](https://www.inetmd.pt/equipa/hugo-paquete/)
+- [Absonus Lab](https://absonuslab.org)
+- [Sensoria Lab (UBI)](https://iartes.ubi.pt/laboratorios/sensoria)
+- [Biofeedback Art Research](https://biofeedbackartresearch.net/members/paquete/)
+- [UP enrede](https://www.up.pt/enrede/alfa/hugo-paquete/)
+
+---
+
+## Funding
+
+This work is funded by national funds through **FCT — Fundação para a Ciência e
+a Tecnologia** within the scope of:
+
+- **2024.09158.CEECIND** — *AI as Catalyst: Transformative Impacts on Digital
+  Performance, Computational Music, and Cultural Creativity* (2026–2029)
+- **CEEC-FCT grant No. 2026-HELIOSONIC**
 
 
-### License
+## License
 
-**GNU General Public License v3.0 — © 2026 Hugo Paquete**
+**GNU General Public License v3.0** — © 2026 Hugo Paquete. All rights reserved.
 
-✅ Permitted: academic research, artistic creation, education  
-❌ Prohibited: commercial use without permission, reverse engineering, AI training without permission
+- ✅ Permitted: academic research, artistic creation, education
+- ❌ Prohibited: commercial use without permission, reverse engineering, AI training without permission
 
+---
 
-### Contact
+## Contact
 
-Author: Hugo Paquete — https://hugopaquete.com  
-GitHub: @hugopaquete  
-Institution: INET-md, University of Aveiro
-
-
-[!WARNING]
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-This is an artistic and educational tool — not intended for scientific research,
-prediction, or mission-critical applications.
-Physical models (quantum, black hole, g-modes) are metaphors and artistic
-analogies, not simulations.
-
+- **Email / Website:** [hugopaquete.com](https://hugopaquete.com/)
+- **GitHub:** [@hugopaquete](https://github.com/hugopaquete)
+- **Institution:** INET-md, University of Aveiro
