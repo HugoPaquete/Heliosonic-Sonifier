@@ -2,7 +2,7 @@
   <img src="assets/icons/HELIOSONIC%20SONIFIER_128x128.png" alt="Heliosonic Sonifier" width="128">
 </p>
 
-<h1 align="center"> Heliosonic Sonifier</h1>
+<h1 align="center">Heliosonic Sonifier</h1>
 
 <p align="center">
   <b>Real-time NOAA solar wind sonification with AI, reinforcement learning,<br>
@@ -20,6 +20,9 @@
   <img src="https://img.shields.io/badge/MIDI-16%20channels-success.svg" alt="MIDI">
   <img src="https://img.shields.io/badge/NOAA-real--time-brightgreen.svg" alt="NOAA">
   <img src="https://img.shields.io/badge/docs-8%20files-informational.svg" alt="Docs">
+  <a href="https://doi.org/10.5281/zenodo.21879803">
+    <img src="https://img.shields.io/badge/DOI-10.5281/zenodo.21879803-blue.svg" alt="DOI">
+  </a>
 </p>
 
 ## Academic Context
@@ -70,11 +73,12 @@ creativity, serving as a platform for live performance and data exploration.
 ### Key Innovations
 
 - **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
-- **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate (2–60%)
-- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition (metaphor)
+- **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate
+- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition
 - **Black-hole data mutation** — artistic metaphor for data transformation
-- **Helioseismic modulation** — p-modes (3 mHz, verified) and g-modes (theoretical)
+- **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
 - **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
+- **Custom hardware controllers** — 16-key, 12-key, and joystick
 
 ---
 
@@ -93,18 +97,6 @@ dive into any subsystem.
 | 06 | [Data Mapping](docs/06-DATA-MAPPING.md) | NOAA → music, 1:N transduction paradigm |
 | 07 | [Performance](docs/07-PERFORMANCE.md) | Benchmarks, mapping accuracy, diversity |
 | 08 | [Scientific Transparency](docs/08-SCIENTIFIC-TRANSPARENCY.md) | Verified / theoretical / artistic models |
-
----
-
-## Key innovations
-
-- **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
-- **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate
-- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition
-- **Black-hole data mutation** — artistic metaphor for data transformation
-- **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
-- **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
-- **Custom hardware controllers** — 16-key, 12-key, and joystick
 
 ---
 
