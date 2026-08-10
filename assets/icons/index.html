@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HELIOSONIC SONIFIER — Brand Icons</title>
+
+<!-- Favicon integration (all sizes) -->
+<link rel="icon" type="image/x-icon" href="HELIOSONIC%20SONIFIER_32x32.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="HELIOSONIC%20SONIFIER_16x16.png">
+<link rel="icon" type="image/png" sizes="24x24" href="HELIOSONIC%20SONIFIER_24x24.png">
+<link rel="icon" type="image/png" sizes="32x32" href="HELIOSONIC%20SONIFIER_32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="HELIOSONIC%20SONIFIER_48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="HELIOSONIC%20SONIFIER_64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="HELIOSONIC%20SONIFIER_128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="HELIOSONIC%20SONIFIER_256x256.png">
+<link rel="apple-touch-icon" sizes="128x128" href="HELIOSONIC%20SONIFIER_128x128.png">
+
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-panel: #111111;
+    --bg-card: #161616;
+    --border: #222222;
+    --accent: #FF6B00;
+    --accent-dim: #CC5500;
+    --text: #E0E0E0;
+    --text-sec: #888888;
+    --text-dim: #555555;
+    --ai-blue: #38BDF8;
+    --ai-teal: #0D9488;
+    --ai-pink: #B1126B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  header {
+    display: flex; align-items: center; gap: 24px;
+    padding-bottom: 24px; margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  header img { width: 96px; height: 96px; image-rendering: auto; }
+  header h1 {
+    font-size: 22px; letter-spacing: 3px; color: var(--accent);
+    font-weight: 700;
+  }
+  header p { color: var(--text-sec); font-size: 11px; letter-spacing: 2px; }
+
+  /* Sections */
+  section { margin-bottom: 40px; }
+  h2 {
+    color: var(--accent); font-size: 12px; letter-spacing: 2px;
+    margin-bottom: 16px; font-weight: 700;
+  }
+  h2::before { content: "■ "; color: var(--accent-dim); }
+
+  /* Icon grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 16px 12px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card img { display: block; margin: 0 auto 10px; }
+  .card .size { color: var(--text); font-size: 11px; font-weight: bold; }
+  .card .fmt  { color: var(--text-dim); font-size: 9px; letter-spacing: 1px; }
+  .card a {
+    display: inline-block; margin-top: 8px;
+    color: var(--accent); font-size: 9px; text-decoration: none;
+    letter-spacing: 1px;
+  }
+  .card a:hover { color: var(--text); }
+
+  /* Preview swatches */
+  .previews { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch {
+    width: 180px; padding: 24px; text-align: center;
+    border: 1px solid var(--border);
+  }
+  .swatch img { width: 96px; height: 96px; }
+  .swatch .label {
+    display: block; margin-top: 10px;
+    font-size: 9px; letter-spacing: 1px; color: var(--text-sec);
+  }
+  .swatch.dark    { background: #0D0D0D; }
+  .swatch.light   { background: #E8E8E8; }
+  .swatch.accent  { background: var(--accent); }
+  .swatch.accent .label { color: #0A0A0A; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  th {
+    text-align: left; color: var(--accent); letter-spacing: 1px;
+    padding: 8px; border-bottom: 1px solid var(--accent-dim); font-size: 10px;
+  }
+  td { padding: 8px; border-bottom: 1px solid var(--border); color: var(--text-sec); }
+  td:first-child { color: var(--text); font-weight: bold; }
+
+  /* Code blocks */
+  pre {
+    background: var(--bg-panel); border: 1px solid var(--border);
+    padding: 14px; font-size: 11px; overflow-x: auto;
+    color: #CCCCCC; margin-top: 8px;
+  }
+  pre .c { color: var(--text-dim); }
+  pre .k { color: var(--accent); }
+
+  footer {
+    margin-top: 48px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 9px; letter-spacing: 1px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header>
+    <img src="HELIOSONIC%20SONIFIER_256x256.png" alt="Heliosonic Sonifier icon">
+    <div>
+      <h1>HELIOSONIC SONIFIER</h1>
+      <p>BRAND &amp; ICON SYSTEM · HUGO PAQUETE · 2026</p>
+      <p style="color:var(--text-dim)">NOAA SOLAR WIND SONIFICATION · V18.5</p>
+    </div>
+  </header>
+
+  <!-- ══════════ ICON SET — PNG ══════════ -->
+  <section>
+    <h2>ICON SET — PNG (TRANSPARENT)</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_16x16.png" width="16" height="16" alt="16px">
+        <div class="size">16×16</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_16x16.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_24x24.png" width="24" height="24" alt="24px">
+        <div class="size">24×24</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_24x24.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_32x32.png" width="32" height="32" alt="32px">
+        <div class="size">32×32</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_32x32.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_48x48.png" width="48" height="48" alt="48px">
+        <div class="size">48×48</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_48x48.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_64x64.png" width="64" height="64" alt="64px">
+        <div class="size">64×64</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_64x64.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_128x128.png" width="96" height="96" alt="128px">
+        <div class="size">128×128</div><div class="fmt">PNG</div>
+        <a href="HELIOSONIC%20SONIFIER_128x128.png" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_256x256.png" width="128" height="128" alt="256px">
+        <div class="size">256×256</div><div class="fmt">PNG · MASTER</div>
+        <a href="HELIOSONIC%20SONIFIER_256x256.png" download>↓ DOWNLOAD</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ICON SET — ICO ══════════ -->
+  <section>
+    <h2>ICON SET — ICO (WINDOWS)</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_16x16.png" width="16" height="16" alt="16px ico">
+        <div class="size">16×16</div><div class="fmt">ICO</div>
+        <a href="HELIOSONIC%20SONIFIER_16x16.ico" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_32x32.png" width="32" height="32" alt="32px ico">
+        <div class="size">32×32</div><div class="fmt">ICO</div>
+        <a href="HELIOSONIC%20SONIFIER_32x32.ico" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_48x48.png" width="48" height="48" alt="48px ico">
+        <div class="size">48×48</div><div class="fmt">ICO</div>
+        <a href="HELIOSONIC%20SONIFIER_48x48.ico" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_64x64.png" width="64" height="64" alt="64px ico">
+        <div class="size">64×64</div><div class="fmt">ICO</div>
+        <a href="HELIOSONIC%20SONIFIER_64x64.ico" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_128x128.png" width="96" height="96" alt="128px ico">
+        <div class="size">128×128</div><div class="fmt">ICO</div>
+        <a href="HELIOSONIC%20SONIFIER_128x128.ico" download>↓ DOWNLOAD</a>
+      </div>
+      <div class="card">
+        <img src="HELIOSONIC%20SONIFIER_256x256.png" width="128" height="128" alt="256px ico">
+        <div class="size">256×256</div><div class="fmt">ICO · APP RESOURCE</div>
+        <a href="HELIOSONIC%20SONIFIER_256x256.ico" download>↓ DOWNLOAD</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ BACKGROUND PREVIEWS ══════════ -->
+  <section>
+    <h2>CONTRAST PREVIEW</h2>
+    <div class="previews">
+      <div class="swatch dark">
+        <img src="HELIOSONIC%20SONIFIER_128x128.png" alt="on dark">
+        <span class="label">DARK UI (#0D0D0D)</span>
+      </div>
+      <div class="swatch light">
+        <img src="HELIOSONIC%20SONIFIER_128x128.png" alt="on light">
+        <span class="label">LIGHT DOCUMENTS</span>
+      </div>
+      <div class="swatch accent">
+        <img src="HELIOSONIC%20SONIFIER_128x128.png" alt="on accent">
+        <span class="label">ACCENT (#FF6B00)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ USAGE GUIDELINES ══════════ -->
+  <section>
+    <h2>USAGE GUIDELINES</h2>
+    <table>
+      <tr><th>SIZE</th><th>FORMAT</th><th>INTENDED USE</th></tr>
+      <tr><td>16×16</td><td>PNG / ICO</td><td>Browser favicon, menus, list views</td></tr>
+      <tr><td>24×24</td><td>PNG / ICO</td><td>Bookmarks, Windows small icons</td></tr>
+      <tr><td>32×32</td><td>PNG / ICO</td><td>Favicon @2x, classic taskbar</td></tr>
+      <tr><td>48×48</td><td>PNG / ICO</td><td>Windows Explorer, app lists</td></tr>
+      <tr><td>64×64</td><td>PNG / ICO</td><td>High-DPI lists, dock previews</td></tr>
+      <tr><td>128×128</td><td>PNG / ICO</td><td>README, documentation, stores</td></tr>
+      <tr><td>256×256</td><td>PNG / ICO</td><td>Master app icon, installer, large displays</td></tr>
+    </table>
+    <p style="color:var(--text-dim); font-size:10px; margin-top:10px;">
+      The 256×256 ICO is loaded at runtime by <span style="color:var(--text)">HeliosonicApp._setup_icon()</span>
+      and applied as the application window icon. Do not recolor, rotate or add effects to the icon.
+      Minimum clear space around the icon: 12% of its width.
+    </p>
+  </section>
+
+  <!-- ══════════ INTEGRATION SNIPPETS ══════════ -->
+  <section>
+    <h2>INTEGRATION</h2>
+
+    <p style="color:var(--text-sec); font-size:11px;">README header:</p>
+<pre>&lt;p align="center"&gt;
+  &lt;img src="<span class="k">assets/icons/HELIOSONIC%20SONIFIER_128x128.png</span>"
+       alt="Heliosonic Sonifier" width="128"&gt;
+&lt;/p&gt;</pre>
+
+    <p style="color:var(--text-sec); font-size:11px; margin-top:16px;">GitHub Pages / HTML head (favicon):</p>
+<pre>&lt;link rel="icon" type="image/x-icon" href="<span class="k">assets/icons/HELIOSONIC%20SONIFIER_32x32.ico</span>"&gt;
+&lt;link rel="apple-touch-icon" sizes="128x128"
+      href="<span class="k">assets/icons/HELIOSONIC%20SONIFIER_128x128.png</span>"&gt;</pre>
+
+    <p style="color:var(--text-sec); font-size:11px; margin-top:16px;">Desktop entry (Linux reference):</p>
+<pre><span class="c">[Desktop Entry]</span>
+Icon=<span class="k">heliosonic-sonifier</span>  <span class="c"># install 256×256 PNG to /usr/share/icons/hicolor/256x256/apps/</span></pre>
+  </section>
+
+  <footer>
+    HELIOSONIC SONIFIER © 2026 HUGO PAQUETE · GPL-3.0 · INET-md, UNIVERSITY OF AVEIRO<br>
+    BRAND ASSETS — FOR PROJECT DOCUMENTATION AND PRESENTATION
+  </footer>
+
+</div>
+</body>
+</html>
