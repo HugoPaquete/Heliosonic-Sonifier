@@ -1,0 +1,69 @@
+cff-version: 1.2.0
+message: >-
+  If you use the Heliosonic Sonifier in academic, artistic, or educational
+  work, please cite it using the metadata below.
+type: software
+
+title: >-
+  Heliosonic Sonifier: Real-Time NOAA Solar Wind Sonification with AI,
+  Reinforcement Learning, and a Quantum-Inspired Glitch Engine
+
+authors:
+  - family-names: Paquete
+    given-names: Hugo
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: INET-md, University of Aveiro
+  - name: DeepSeek AI
+
+version: 18.5
+date-released: 2026-08-08
+
+url: "https://github.com/hugopaquete/Heliosonic-Sonifier"
+repository-code: "https://github.com/hugopaquete/Heliosonic-Sonifier"
+
+license: GPL-3.0-only
+
+keywords:
+  - sonification
+  - solar-wind
+  - space-weather
+  - NOAA
+  - reinforcement-learning
+  - markov-chains
+  - generative-music
+  - computational-creativity
+  - MIDI
+  - data-art
+
+abstract: >-
+  A real-time artistic sonification instrument that transforms NOAA/SWPC space
+  weather data into adaptive MIDI music through a 7-layer pipeline, 20
+  autonomous AI agents, and a quantum-inspired glitch engine. This repository
+  documents the system architecture; source code and executables are not
+  distributed.
+
+funding:
+  - funder:
+      name: Fundação para a Ciência e a Tecnologia (FCT)
+    grant: "2024.09158.CEECIND"
+    award-title: >-
+      AI as Catalyst: Transformative Impacts on Digital Performance,
+      Computational Music, and Cultural Creativity
+  - funder:
+      name: CEEC-FCT
+    grant: "2026-HELIOSONIC"
+
+references:
+  - type: conference-paper
+    title: "SRT7 Framework"
+    collection-title: AVANCA 2026
+    authors:
+      - family-names: Paquete
+        given-names: Hugo
+
+  - type: conference-paper
+    title: "Post-Techno Aesthetics"
+    collection-title: EIMAD 2026
+    authors:
+      - family-names: Paquete
+        given-names: Hugo
