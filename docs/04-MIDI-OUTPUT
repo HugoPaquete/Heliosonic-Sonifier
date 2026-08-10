@@ -1,212 +1,175 @@
-# MIDI Output
-
-> Complete MIDI channel mapping, CC automation, and polyphony
-> configuration for the Heliosonic Sonifier.
 
 ---
 
-## Channel Architecture (16 Channels)
+## 📄 File 2: `docs/04-MIDI-OUTPUT.md` *(corrected from source)*
 
-| CH | Voice Type   | Role               | Polyphony |
-|:--:|--------------|--------------------|:---------:|
-| 1  | DRONE_BASS   | Bass drone layer   | 4 |
-| 2  | DRONE_MID    | Mid drone layer    | 4 |
-| 3  | DRONE_HIGH   | High drone layer   | 4 |
-| 4  | MELODY       | Melodic voice      | 2 |
-| 5  | GLITCH       | Glitch effects     | 12 |
-| 6  | CHORD        | Chordal pads       | 8 |
-| 7  | AMBIENT      | Ambient textures   | 6 |
-| 8  | RHYTHM       | Rhythmic patterns  | 8 |
-| 9  | PULSE        | Rhythmic pulse     | 4 |
-| 10 | HARMONIC     | Harmonic layers    | 6 |
-| 11 | TEXTURE      | Textural layers    | 8 |
-| 12 | FX           | Sound effects      | 6 |
-| 13 | RECALLED     | Recalled patterns  | 4 |
-| 14 | SILENCE      | Silence voice      | 2 |
-| 15 | VISIBLE      | CCs only           | 0 |
-| 16 | INTERNAL     | CCs only           | 0 |
+```markdown
+# MIDI Output
+
+Complete MIDI channel architecture, Control Change mapping, and voice
+configuration for the Heliosonic Sonifier. Values are taken directly from
+`MidiProxy` and `MIDIController`.
+
+---
+
+## 16-channel architecture
+
+| CH | Voice | Role | Polyphony |
+|:--:|-------|------|:---------:|
+| 1 | `DRONE_BASS` | Bass drone layer | 4 |
+| 2 | `DRONE_MID` | Mid drone layer | 4 |
+| 3 | `DRONE_HIGH` | High drone layer | 4 |
+| 4 | `MELODY` | Melodic voice | 2 |
+| 5 | `GLITCH` | Glitch effects | 12 |
+| 6 | `CHORD` | Chordal pads | 8 |
+| 7 | `AMBIENT` | Ambient textures | 6 |
+| 8 | `RHYTHM` | Rhythmic patterns | 8 |
+| 9 | `PULSE` | Rhythmic pulse | 4 |
+| 10 | `HARMONIC` | Harmonic layers | 6 |
+| 11 | `TEXTURE` | Textural layers | 8 |
+| 12 | `FX` | Sound effects | 6 |
+| 13 | `RECALLED` | Recalled patterns | 4 |
+| 14 | `SILENCE` | Silence voice | 2 |
+| 15 | `VISIBLE` | **CCs only** (automation) | 0 |
+| 16 | `INTERNAL` | **CCs only** (expressive) | 0 |
 
 **Total polyphony:** 128 notes across channels 1–14.
 
 ---
 
-## Voice Type → Channel Mapping
+## Voice priorities
 
-| Voice Type | Channel | Velocity | Duration |
-|------------|:-------:|:--------:|:--------:|
-| drone_bass   | 1 | 50–75 | 8–60 s |
-| drone_mid    | 2 | 55–80 | 8–60 s |
-| drone_high   | 3 | 60–85 | 8–60 s |
-| melody       | 4 | 70–110 | 3–45 s |
-| glitch       | 5 | 70–110 | 0.1–2 s |
-| chord        | 6 | 60–90 | 5–25 s |
-| ambient      | 7 | 45–70 | 6–45 s |
-| rhythm       | 8 | 65–100 | 0.1–0.8 s |
-| pulse        | 9 | 70–100 | 0.05–0.3 s |
-| harmonic     | 10 | 55–85 | 4–20 s |
-| texture      | 11 | 50–80 | 8–30 s |
-| fx           | 12 | 70–110 | 0.05–1 s |
-| recalled     | 13 | 60–90 | 2–6 s |
-| silence      | 14 | 30–45 | 10–20 s |
+Used for voice-stealing when a channel exceeds its polyphony limit
+(higher = more likely to be preserved).
+
+| Voice | Priority | Voice | Priority |
+|-------|:--------:|-------|:--------:|
+| `melody` | 10 | `pulse` | 5 |
+| `glitch` | 8 | `recalled` | 5 |
+| `rhythm` / `rhythmic` | 8 | `ambient` | 4 |
+| `drone` / `drone_*` | 7 | `texture` | 3 |
+| `chord` | 6 | `fx` | 3 |
+| `harmonic` | 6 | `silence` | 2 |
 
 ---
 
-## Channel 15 — Visible CCs (System Automation)
+## Velocity ranges
 
-Sent automatically every 3 frames.
-
-| CC | Parameter | Source | Range |
-|:--:|-----------|--------|:-----:|
-| 20 | Chaos | EmotionState.chaos | 0–127 |
-| 21 | Density | MotorC.rhythm_density | 0–127 |
-| 22 | Register | MotorC.register | 0–127 |
-| 23 | Glitch Intensity | MotorC.glitch_intensity | 0–127 |
-| 24 | Tension | EmotionState.tension | 0–127 |
-| 25 | Storm Intensity | NOAAState.storm_intensity | 0–127 |
-| 26 | Bz Normalized | NOAAState.bz | 0–127 |
-| 27 | Speed Normalized | NOAAState.speed | 0–127 |
-| 59 | Musical State | Current state | 0–127 |
-| 60 | Activity | max(chaos, storm, glitch) | 0–127 |
-| 70 | P-Mode | Helioseismic p-mode | 0–127 |
-| 71 | G-Mode | Helioseismic g-mode | 0–127 |
-| 72 | Sunspot | Sunspot probability | 0–127 |
-
-### Extended CCs (40–58)
-
-| CC | Parameter |
-|:--:|-----------|
-| 40 | Bx |
-| 41 | By |
-| 42 | Bt |
-| 43 | Proton temperature |
-| 44 | Kp index |
-| 45 | Dst index |
-| 46 | F10.7 flux |
-| 47 | Latitude |
-| 48 | Longitude |
-| 49 | Patterns learned |
-| 50 | Patterns recalled |
-| 51 | Active patterns |
-| 52 | Interval shift |
-| 53 | Scale shift |
-| 54 | Swing amount |
-| 55 | Note repeat |
-| 56 | Bit crush |
-| 57 | Polyrhythm |
-| 58 | Time signature |
+| Voice | Range | Voice | Range |
+|-------|:-----:|-------|:-----:|
+| `melody` | 70–110 | `pulse` | 70–100 |
+| `drone_bass` | 50–75 | `harmonic` | 55–85 |
+| `drone_mid` | 55–80 | `texture` | 50–80 |
+| `drone_high` | 60–85 | `fx` | 70–110 |
+| `glitch` | 70–110 | `recalled` | 60–90 |
+| `rhythm` / `rhythmic` | 65–100 | `silence` | 30–45 |
+| `chord` | 60–90 | `ambient` | 45–70 |
 
 ---
 
-## Channel 16 — Internal CCs (Advanced Expressive)
+## Duration limits
 
-### Envelope CCs (64–78)
-
-| CC | Parameter |
-|:--:|-----------|
-| 64 | Sustain |
-| 65 | Portamento |
-| 71 | Resonance |
-| 72 | Release |
-| 73 | Attack |
-| 74 | Brightness |
-| 75 | Decay |
-| 76 | Vibrato Depth |
-| 77 | Vibrato Rate |
-| 78 | Filter Cutoff |
-
-### Spatial CCs (10–11, 91–95)
-
-| CC | Parameter |
-|:--:|-----------|
-| 10 | Pan |
-| 11 | Expression |
-| 91 | Reverb |
-| 92 | Chorus |
-| 93 | Chorus 2 |
-| 94 | Delay |
-| 95 | Texture Density |
-
-### Advanced CCs (96–109)
-
-| CC | Parameter | Source |
-|:--:|-----------|--------|
-| 96 | Glitch Intensity | GlitchEngine |
-| 97 | Harmonic Tension | EmotionState |
-| 98 | Articulation | MusicalMapper |
-| 99 | Musical Energy | InternalState |
-| 100 | Bz Raw | NOAAState |
-| 101 | Speed Raw | NOAAState |
-| 102 | Protons Raw | NOAAState |
-| 103 | Electrons Raw | NOAAState |
-| 104 | Storm Intensity | NOAAState |
-| 105 | Tension | EmotionState |
-| 106 | Chaos | EmotionState |
-| 107 | Alert High | AlertSystem |
-| 108 | Chaos High | Chaos > 0.7 |
-| 109 | Energy High | Energy > 0.7 |
-
-### Modulation CCs (1–7)
-
-| CC | Parameter |
-|:--:|-----------|
-| 1 | Mod wheel |
-| 2 | Breath |
-| 5 | Portamento time |
-| 7 | Volume |
+| Voice | Min – Max (s) | Voice | Min – Max (s) |
+|-------|:-------------:|-------|:-------------:|
+| `melody` | 3.0 – 45.0 | `pulse` | 0.05 – 0.3 |
+| `drone` / `drone_*` | 8.0 – 60.0 | `harmonic` | 4.0 – 20.0 |
+| `glitch` | 0.1 – 2.0 | `texture` | 8.0 – 30.0 |
+| `rhythm` | 0.1 – 0.8 | `fx` | 0.05 – 1.0 |
+| `chord` | 5.0 – 25.0 | `recalled` | 2.0 – 6.0 |
+| `ambient` | 6.0 – 45.0 | `silence` | 10.0 – 20.0 |
 
 ---
 
-## Release Envelopes
+## Release envelopes
 
-| Voice Type | Base Release | Modified By |
-|------------|:------------:|-------------|
-| drone | 2.0 s | chaos, storm, p-mode, g-mode |
-| drone_bass | 2.5 s | same |
-| drone_mid | 2.0 s | same |
-| drone_high | 1.5 s | same |
-| melody | 0.5 s | same |
-| glitch | 0.05 s | same |
-| rhythm | 0.1 s | same |
-| chord | 1.0 s | same |
-| ambient | 1.5 s | same |
-| texture | 2.0 s | same |
-| pulse | 0.3 s | same |
-| harmonic | 1.2 s | same |
-| fx | 0.8 s | same |
-| recalled | 0.3 s | same |
-| silence | 3.0 s | same |
+Base release time per voice (modulated 0.3×–3.0× by chaos, storm, p/g-modes).
 
-Modifier range: **0.3× to 3.0×**
+| Voice | Release (s) | Voice | Release (s) |
+|-------|:-----------:|-------|:-----------:|
+| `drone_bass` | 2.5 | `pulse` | 0.3 |
+| `drone` / `drone_mid` | 2.0 | `harmonic` | 1.2 |
+| `drone_high` | 1.5 | `fx` | 0.8 |
+| `melody` | 0.5 | `recalled` | 0.3 |
+| `glitch` | 0.05 | `silence` | 3.0 |
+| `rhythm` / `rhythmic` | 0.1 | `texture` | 2.0 |
+| `chord` | 1.0 | `ambient` | 1.5 |
 
 ---
 
-## Batch Mode
+## Channel 15 — Visible CCs (system automation)
+
+Sent automatically and can modulate any VST parameter in your DAW.
+
+| CC | Parameter | CC | Parameter |
+|:--:|-----------|:--:|-----------|
+| 20 | Chaos | 24 | Tension |
+| 21 | Density | 25 | Storm intensity |
+| 22 | Register | 26 | Bz (normalized) |
+| 23 | Glitch intensity | 27 | Speed (normalized) |
+
+### Extended CCs (40–72)
+
+| CC | Parameter | CC | Parameter |
+|:--:|-----------|:--:|-----------|
+| 40–43 | Bx / By / Bt / temperature | 52–53 | Interval / scale shift |
+| 44–46 | Kp / Dst / F10.7 | 54 | Swing amount |
+| 47–48 | Latitude / longitude | 55–56 | Note repeat / bit crush |
+| 49–51 | Patterns learned / recalled / active | 57–58 | Polyrhythm / time signature |
+| 59 | Musical state | 60 | Activity |
+| 70 | p-mode | 71 | g-mode | 72 | Sunspot |
+
+---
+
+## Channel 16 — Internal CCs (expressive layer)
+
+The advanced expressive layer driven by the `MusicalMapper`.
+
+### Envelope & filter (64–78)
+
+| CC | Parameter | CC | Parameter |
+|:--:|-----------|:--:|-----------|
+| 64 | Sustain | 73 | Attack |
+| 65 | Portamento | 74 | Brightness |
+| 71 | Resonance | 75 | Decay |
+| 72 | Release | 76–77 | Vibrato depth / rate |
+|  |  | 78 | Filter cutoff |
+
+### Space & texture (91–99)
+
+| CC | Parameter | CC | Parameter |
+|:--:|-----------|:--:|-----------|
+| 91 | Reverb | 95 | Texture density |
+| 92–93 | Chorus / Chorus 2 | 96 | Glitch intensity |
+| 94 | Delay | 97 | Harmonic tension |
+|  |  | 98–99 | Articulation / musical energy |
+
+### Raw data & modulation (1–11, 100–109)
+
+| CC | Parameter | CC | Parameter |
+|:--:|-----------|:--:|-----------|
+| 1 | Modulation | 100–103 | Bz / speed / protons / electrons (raw) |
+| 2 | Breath | 104 | Storm intensity |
+| 5 | Portamento time | 105–106 | Tension / chaos |
+| 7 | Volume | 107 | Alert high |
+| 10–11 | Pan / expression | 108–109 | Chaos high / energy high |
+
+---
+
+## Batch mode
 
 | Parameter | Value |
 |-----------|-------|
 | Batch interval | 10 ms |
-| Max queue size | 200 |
+| Max queue size | 200 messages |
 | Batched voices | ambient, texture, fx, recalled, silence, pulse |
-| Non-batched | melody, glitch, rhythm, drone, chord |
+| High-priority | melody, glitch, rhythm, drone, chord |
 
 ---
 
-## MIDI Clock
-
-| Parameter | Value |
-|-----------|-------|
-| Resolution | 24 PPQN |
-| Default BPM | 120 |
-| Clock interval | 60000 / (BPM × 24) ms |
-| Min interval | 5 ms |
-| Max interval | 100 ms |
-
----
-
-## Recommended DAW Setup
+## Recommended DAW setup
 
 ```text
-Heliosonic → MIDI Out → DAW → VST → Audio
+Heliosonic → MIDI Out → DAW (Ableton / Logic / Reaper) → VST / Synth → Audio
 
 
 ### Windows Setup
