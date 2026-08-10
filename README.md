@@ -1,4 +1,4 @@
-<h1 align="center"> Heliosonic Sonifier</h1>
+<h1 align="center">☀️ Heliosonic Sonifier</h1>
 
 <p align="center">
   <b>Real-time NOAA solar wind sonification with AI, reinforcement learning,<br>
@@ -11,44 +11,70 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></a>
-  <img src="https://img.shields.io/badge/version-18.4-orange.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-18.5-orange.svg" alt="Version">
   <img src="https://img.shields.io/badge/platform-Windows-blue.svg" alt="Platform">
   <img src="https://img.shields.io/badge/MIDI-16%20channels-success.svg" alt="MIDI">
   <img src="https://img.shields.io/badge/NOAA-real--time-brightgreen.svg" alt="NOAA">
+  <img src="https://img.shields.io/badge/docs-8%20files-informational.svg" alt="Docs">
 </p>
 
 ---
 
 ## Overview
 
-**Heliosonic Sonifier** is a real-time artistic sonification instrument that
-transforms **NOAA/SWPC space weather data** into adaptive MIDI music. It bridges
+The **Heliosonic Sonifier** is a real-time artistic sonification instrument that
+transforms **NOAA/SWPC space-weather data** into adaptive MIDI music. It bridges
 scientific data and musical expression through generative AI and computational
-creativity — a platform for live performance and data exploration.
+creativity, serving as a platform for live performance and data exploration.
 
 > [!IMPORTANT]
-> This is a **research prototype** for academic and artistic purposes. The source
-> code is proprietary and **not distributed**. This repository is documentation
-> and project presentation only.
+> This is a **documentation-only** repository. It presents the system's
+> architecture, design, and research context. The source code and executables
+> are proprietary and are **not distributed** here.
 
 | Attribute | Value |
 |-----------|-------|
-| **Version** | 18.4 |
-| **Status** | Production-ready research prototype |
-| **Platform** | Windows 10/11 |
+| **Version** | 18.5 |
 | **Scale** | ~18,450 LOC · 25 modules · 20 autonomous agents |
-| **Operation** | 20 Hz real-time (50 ms frame budget) |
-| **Funding** | CEEC-FCT grant No. 2026-HELIOSONIC |
+| **Pipeline** | 7 layers · 20 Hz real-time (50 ms frame budget) |
+| **Output** | MIDI + CC · 16 channels · 128-note polyphony |
+| **Platform** | Windows 10/11 |
+| **Funding** | FCT 2024.09158.CEECIND · CEEC-FCT 2026-HELIOSONIC |
 
-### Key innovations
+---
+
+## 📚 Documentation
+
+The full documentation lives in [`docs/`](docs/). Start with the overview, then
+dive into any subsystem.
+
+| # | Document | Contents |
+|:-:|----------|----------|
+| 01 | [Overview](docs/01-OVERVIEW.md) | Mission, pipeline, research positioning |
+| 02 | [Architecture](docs/02-ARCHITECTURE.md) | 7-layer pipeline, 25-module inventory |
+| 03 | [AI Systems](docs/03-AI-SYSTEMS.md) | Markov, reinforcement learning, quantum glitch |
+| 04 | [MIDI Output](docs/04-MIDI-OUTPUT.md) | 16 channels, CCs, polyphony limits |
+| 05 | [Hardware](docs/05-HARDWARE.md) | 16/12-key controllers + joystick mappings |
+| 06 | [Data Mapping](docs/06-DATA-MAPPING.md) | NOAA → music, 1:N transduction paradigm |
+| 07 | [Performance](docs/07-PERFORMANCE.md) | Benchmarks, mapping accuracy, diversity |
+| 08 | [Scientific Transparency](docs/08-SCIENTIFIC-TRANSPARENCY.md) | Verified / theoretical / artistic models |
+
+---
+
+## ✨ Key innovations
 
 - **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
-- **Reinforcement learning** — 1,000-entry episodic memory with dynamic learning rate
+- **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate
 - **Quantum-inspired glitch engine** — tunneling, entanglement, superposition
 - **Black-hole data mutation** — artistic metaphor for data transformation
 - **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
 - **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
 - **Custom hardware controllers** — 16-key, 12-key, and joystick
+
+---
+
+## 🏗️ Architecture at a glance
+
 
 ---
 
