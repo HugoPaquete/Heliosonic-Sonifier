@@ -1,27 +1,66 @@
-
----
-
-## 📄 File 4: `docs/05-HARDWARE.md`
-
-```markdown
 # Hardware Integration
 
-> Controller mappings for the Heliosonic Sonifier's
-> custom hardware and joystick input.
+> Physical controllers, prototype specifications, and performance mappings
+> for the Heliosonic Sonifier.
+
+> [!NOTE]
+> **Prototype status.** The controllers described here are **hand-built
+> research prototypes (Revision A)**, used for live performance and system
+> validation. They are **not commercial products** and are not sold or
+> distributed. Schematics and firmware remain proprietary; this page
+> documents the interface for performers and researchers.
 
 ---
 
-## Controller Overview
+## 🎛️ Physical Prototypes (Revision A)
 
-| Controller | Type | Description |
-|------------|------|-------------|
-| **16-Key Controller** | Digital | Main musical state and effect triggers |
-| **12-Key Controller** | Digital | Quick presets and parameter toggles |
-| **Joystick (T.Flight Stick X)** | Analog + Digital | Continuous modulation + performance triggers |
+<p align="center">
+  <img src="../assets/hardware/proto-controllers.jpg" width="95%"
+       alt="HS-16 and HS-12 prototype controllers">
+  <br>
+  <em>HS-16 PROTO A (left) · HS-12 PROTO A (right)</em>
+</p>
+
+### Prototype units
+
+| Unit | Keys | Matrix | Rotary encoders | Keycaps | Case | Status |
+|------|:----:|--------|:---------------:|---------|------|:------:|
+| **HS-16 PROTO A** | 16 | 4 × 4 | 3 | Orange ABS | Black acrylic sandwich | ✅ Active |
+| **HS-12 PROTO A** | 12 | 3 × 4 | 2 | Orange + smoke translucent | Black acrylic sandwich | ✅ Active |
+
+### Design language
+
+| Element | Meaning |
+|---------|---------|
+| 🟠 **Orange keycaps** | Primary performance controls (states, effects, presets) |
+| ⬛ **Smoke translucent keycaps** | Secondary / system controls (toggles, shifts) |
+| ⚙️ **Rotary knobs** | Continuous modulation (CC automation) |
+| 🔩 **Acrylic sandwich case** | Laser-cut top/bottom plates, corner screws |
+
+### Build specification (prototype)
+
+| Component | HS-16 | HS-12 |
+|-----------|-------|-------|
+| Key switches | Mechanical, linear (red) | Mechanical, linear (red) |
+| Keycaps | ABS orange | ABS orange + smoke translucent |
+| Encoders | 3 × rotary, aluminium knob | 2 × rotary, aluminium knob |
+| MCU | USB-MIDI class-compliant (Pro Micro / RP2040 class) | same |
+| Connection | USB-C | USB-C |
+| Case | 3 mm black acrylic, 4-screw sandwich | same |
+
+### Rotary encoder mapping (firmware v0.1)
+
+| Unit | Knob | Parameter | MIDI CC |
+|------|:----:|-----------|:-------:|
+| HS-16 | K1 | WARP | 28 |
+| HS-16 | K2 | CHAOS | 20 |
+| HS-16 | K3 | RESONANCE | 30 |
+| HS-12 | K1 | REGISTER | 22 |
+| HS-12 | K2 | TEMPO | 31 |
 
 ---
 
-## 16-Key Controller Mapping
+## 16-Key Controller (HS-16) — Logical Mapping
 
 | Key | Function | Type | Description |
 |:---:|----------|:----:|-------------|
@@ -42,16 +81,14 @@
 | 15 | Reset | Momentary | Reset to default values |
 | 16 | Panic | Momentary | Kill all active notes |
 
----
-
-## 12-Key Controller Mapping
+## 12-Key Controller (HS-12) — Logical Mapping
 
 | Key | Function | Type | Description |
 |:---:|----------|:----:|-------------|
 | 1 | Preset A | Momentary | Calm, melodic — Solar minimum |
 | 2 | Preset B | Momentary | Moderate, rhythmic — Solar wind |
 | 3 | Preset C | Momentary | Intense, glitch — Solar storm |
-| 4 | Preset D | Momentary | Total chaos — Coronal mass ejection |
+| 4 | Preset D | Momentary | Total chaos — CME |
 | 5 | Gravity Invert | Toggle | Invert gravity effect |
 | 6 | Mute Melody | Toggle | Mute melody layer |
 | 7 | Mute Drone | Toggle | Mute drone layer |
@@ -63,150 +100,32 @@
 
 ---
 
-## Joystick — T.Flight Stick X
+## 🕹️ Joystick (T.Flight Stick X)
 
-### Axis Mappings
-
-| Control | Axis | Musical Effect | Range | Curve |
-|---------|:----:|----------------|:-----:|:-----:|
-| **Stick X** | 0 | WARP + PHASE | −1.0 to +1.0 | Exponential / Bipolar |
-| **Stick Y** | 1 | CHAOS + REGISTER | −1.0 to +1.0 | Exponential / Linear |
-| **Throttle** | 2 | DENSITY + RESONANCE | 0.0 to 1.0 | Logarithmic / Exponential |
-| **Rudder (twist)** | 3 | GLITCH | −1.0 to +1.0 | Exponential |
-
-### Axis Detail
-
-| Axis | Parameter 1 | Range | Parameter 2 | Range |
-|------|-------------|:-----:|-------------|:-----:|
-| Stick X | WARP | 0.0 to 0.7 | PHASE | −0.3 to +0.3 |
-| Stick Y | CHAOS | 0.0 to 0.5 | REGISTER SHIFT | −12 to +12 |
-| Throttle | DENSITY | 0.0 to 0.6 | RESONANCE | 0.0 to 0.5 |
-| Rudder | GLITCH | 0.0 to 0.6 | — | — |
-
-### Button Mappings
-
-| Button | Function | Type | Visual Color |
-|:------:|----------|:----:|:------------:|
-| **Trigger (0)** | Solar Flare | Momentary | 🟠 Orange |
-| **1** | Glitch Burst | Momentary | 🟢 Green |
-| **2** | Build-up | Momentary | 🟡 Yellow |
-| **3** | Drop | Momentary | 🔴 Red |
-| **4** | Time Warp | Momentary | 🔵 Blue |
-| **5** | Freeze | Toggle | 🔷 Cyan |
-| **6** | Resonance Sweep | Momentary | 🟣 Purple |
-| **7** | Arpeggio Burst | Momentary | 🟨 Gold |
-| **8** | Cosmic Ray | Momentary | 🟣 Violet |
-| **9** | Helio Burst | Momentary | 🟠 Orange |
-| **10** | Mute Moment | Momentary | ⚪ Grey |
-| **11** | Panic | Momentary | 🔴 Red |
-
-### Hat (D-pad) Mappings
-
-| Direction | Function | Type |
-|:---------:|----------|:----:|
-| **UP** | Register +7 | Momentary |
-| **DOWN** | Register −7 | Momentary |
-| **LEFT** | Scale −1 | Momentary |
-| **RIGHT** | Scale +1 | Momentary |
-
-### Joystick Configuration
-
-| Parameter | Value |
-|-----------|-------|
-| Deadzone | 0.15 |
-| Poll rate | 60 Hz |
-| Master intensity | 1.0 |
-| Auto-start | Disabled |
-| Calibration duration | 2.0 s |
-| Reconnect interval | 5.0 s |
-| Hysteresis threshold | 0.02 |
-
-### Joystick Features
-
-- **Auto-calibration** on startup (2 s, keep joystick centered)
-- **Auto-reconnect** when joystick is disconnected/reconnected
-- **Hysteresis filtering** to prevent jitter
-- **Smoothing** per axis (0.80–0.90 factor)
-- **Deadzone** per axis with extra deadzone for sensitive axes
+| Control | Type | Musical Effect | Range |
+|---------|:----:|----------------|-------|
+| Stick X | Analog | WARP + PHASE | −1.0 … +1.0 |
+| Stick Y | Analog | CHAOS + REGISTER | −1.0 … +1.0 |
+| Throttle | Analog | DENSITY + RESONANCE | 0.0 … 1.0 |
+| Rudder (twist) | Analog | GLITCH | −1.0 … +1.0 |
+| Trigger (Btn 0) | Digital | SOLAR FLARE | Momentary |
+| Btn 1–4 | Digital | Performance effects | Momentary |
+| Btn 5–8 | Digital | Modulation effects | Momentary |
+| Btn 9–10 | Digital | System controls | Momentary |
+| Btn 11 | Digital | PANIC | Momentary |
+| Hat (D-pad) | Digital | Register / scale shifts | Momentary |
 
 ---
 
-## Keyboard Controls
+## 🗺️ Prototype roadmap
 
-### Global
-
-| Key | Function |
-|-----|----------|
-| `H` | Toggle AI Monitor overlay |
-| `V` | Video output (second screen) |
-| `F11` | Toggle fullscreen |
-| `Space` | **PANIC** — kill all notes |
-| `I` | System info dialog |
-| `K` | Controls help dialog |
-| `?` | Quick help dialog |
-| `D` | Debug info |
-| `↑` / `↓` | Brightness adjust |
-| `J` | Toggle joystick |
-| `Shift+J` | Test joystick |
-
-### Musical States
-
-| Key | State |
-|-----|-------|
-| `1` | RHYTHMIC |
-| `2` | MELODIC |
-| `3` | SUSTAINED |
-| `4` | GLITCH |
-| `5` | SILENCE |
-
-### Performance Effects
-
-| Key | Effect |
-|-----|--------|
-| `B` | Build-up |
-| `D` | Drop |
-| `G` | Glitch Burst |
-| `S` | Solar Flare |
-| `T` | Time Warp |
-| `P` | Pitch Rise |
-| `R` | Resonance Sweep |
-| `F` | Freeze |
-| `L` | Rhythm Reset |
-| `C` | Cosmic Ray |
-| `A` | Arpeggio Burst |
-| `M` | Mute Moment |
-| `Shift+W` | Scale Shift |
-| `W` (hold) | Warp (hold) |
-
-### Presets
-
-| Key | Function |
-|-----|----------|
-| `A` / `B` / `C` / `D` | Quick presets |
-| `R` | Random preset |
-| `Shift+R` | Reset all |
+| Revision | Status | Notes |
+|----------|:------:|-------|
+| **PROTO A** (HS-16 / HS-12) | ✅ Current | Acrylic case, mechanical switches, USB-MIDI |
+| **PROTO B** | 📋 Planned | Per-key RGB feedback, OLED state display |
+| **PROTO C** | 💭 Concept | Integrated single-unit console |
 
 ---
 
-## Performance Effect Details
-
-| Effect | Duration | Visual |
-|--------|:--------:|--------|
-| **Solar Flare** | 1.5 s | Orange particle burst |
-| **Glitch Burst** | 1.0 s | Green visual glitch |
-| **Build-up** | 2.0 s | Yellow crescendo |
-| **Drop** | 1.5 s | Red collapse |
-| **Time Warp** | 2.0 s | Blue waves |
-| **Freeze** | 0.5 s | Cyan freeze |
-| **Resonance Sweep** | 2.5 s | Purple resonance waves |
-| **Arpeggio Burst** | 1.0 s | Gold sparks |
-| **Cosmic Ray** | 2.0 s | Violet cosmic rays |
-| **Helio Burst** | 2.0 s | Orange solar explosion |
-| **Mute Moment** | 1.0 s | Grey fade |
-| **Panic** | 0.5 s | Red intense flash |
-
----
-
-*Documentation only. Source code is proprietary and not distributed.*
-*See [02-ARCHITECTURE.md](02-ARCHITECTURE.md) for system overview.*
-
+*Documentation only. Hardware units are research prototypes and are not
+available for purchase.*
