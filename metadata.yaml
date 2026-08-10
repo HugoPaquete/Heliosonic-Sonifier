@@ -1,0 +1,72 @@
+title: "Heliosonic Sonifier — Documentation Release (v18.5)"
+upload_type: "software"
+publication_type: "softwaredocumentation"
+
+description: >
+  Documentation release for the Heliosonic Sonifier system — a real-time
+  NOAA solar wind sonification instrument integrating AI-assisted composition,
+  reinforcement learning, adaptive state machines, and a quantum-inspired
+  glitch engine. This release includes the full architecture description,
+  research context, hardware prototypes, performance benchmarks, and
+  transparency statements. Source code and executables are proprietary and
+  not distributed.
+
+creators:
+  - name: "Paquete, Hugo"
+    orcid: "0000-0002-5844-3678"
+    affiliation: "INET-md — Institute of Ethnomusicology, University of Aveiro"
+
+keywords:
+  - sonification
+  - solar wind
+  - NOAA
+  - space weather
+  - computational music
+  - reinforcement learning
+  - Markov models
+  - generative systems
+  - glitch engine
+  - real-time audio
+  - MIDI
+  - AI-assisted composition
+  - artistic research
+  - multimodal pipelines
+
+license: "cc-by-nc-nd-4.0"
+version: "18.5"
+language: "eng"
+
+related_identifiers:
+  - relation: "isSupplementTo"
+    identifier: "https://github.com/HugoPaquete/Heliosonic-Sonifier"
+    resource_type: "software"
+
+contributors:
+  - name: "Absonus Lab"
+    type: "ResearchGroup"
+    affiliation: "Portugal"
+  - name: "Planetário do Porto – Centro Ciência Viva"
+    type: "Other"
+    affiliation: "Portugal"
+  - name: "Ciencia Viva"
+    type: "Other"
+    affiliation: "Portugal"
+  - name: "OTTOsonics"
+    type: "Other"
+    affiliation: "Austria"
+
+notes: >
+  Documentation release for the Heliosonic Sonifier system (v18.5).
+  Part of the FCT project 2024.09158.CEECIND — 'AI as Catalyst'.
+  No code or executables are distributed.
+
+access_right: "open"
+
+communities:
+  - identifier: "computational-creativity"
+  - identifier: "digital-arts"
+
+funding:
+  - funder: "Fundação para a Ciência e Tecnologia (FCT)"
+    grant_number: "2024.09158.CEECIND"
+    award_title: "AI as Catalyst: Transformative Impacts on Digital Performance, Computational Music, and Cultural Creativity"
