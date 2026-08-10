@@ -42,11 +42,11 @@ and computational creativity.
 
 ## Core innovations
 
-- **State-Aware Markov Chains** — 3rd-order, 8 musical states, ~80,000 transitions
-- **Reinforcement Learning** — autonomous adaptation with 1,000-entry episodic memory
-- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition
-- **Black-hole physics** — artistic metaphor for data mutation
-- **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
+- **State-Aware Markov Chains** — 3rd-order, 8 musical states, ~80,000 transitions  
+- **Reinforcement Learning** — autonomous adaptation with 1,000-entry episodic memory  
+- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition  
+- **Black-hole physics** — artistic metaphor for data mutation  
+- **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes  
 
 ---
 
@@ -73,41 +73,36 @@ flowchart TB
         F["MotorC + Markov + Rhythm<br/>+ Glitch + Ghost"]
     end
     subgraph L7["Layer 7 · Output"]
-
-```
-Full detail in 02-ARCHITECTURE.md.
         G["MIDIController<br/>16 channels · 128 polyphony"]
     end
     A --> B --> C --> D --> E --> F --> G
 
-### Research Positioning
+```
+Full detail in 02-ARCHITECTURE.md.
 
-The **Heliosonic Sonifier** is part of the **AI as Catalyst** research programme  
-(FCT 2024.09158.CEECIND · 2026–2029).  
-It extends the **AEROSONIC** framework into the heliospheric domain and belongs to a family of interconnected sonifiers:
+Research Positioning
+The Heliosonic Sonifier is part of the AI as Catalyst research programme
+(FCT 2024.09158.CEECIND · 2026–2029).
+It extends the AEROSONIC framework into the heliospheric domain and belongs to a family of interconnected sonifiers:
 
-| Project                | Domain                          |
-|------------------------|----------------------------------|
-| AEROSONIC SONIFIER     | Atmospheric data sonification    |
-| HELIOSONIC SONIFIER    | Solar / heliospheric sonification |
-| CYBER ATTACK SONIFIER  | Cybersecurity threat sonification |
-| GLITCH ECOLOGY         | Ecological data sonification     |
+| Project | Domain |
+| --- | --- |
+| AEROSONIC SONIFIER | Atmospheric data sonification |
+| HELIOSONIC SONIFIER | Solar / heliospheric sonification |
+| CYBER ATTACK SONIFIER | Cybersecurity threat sonification |
+| GLITCH ECOLOGY | Ecological data sonification |
 
-Developed with **INET-md / University of Aveiro**, in collaboration with:  
-**Absonus Lab**, **Planetário do Porto – CCV**, and **OTTOsonics**.
 
-### Documentation Map
+Developed with INET-md / University of Aveiro, in collaboration with:
+Absonus Lab, Planetário do Porto – CCV, and OTTOsonics.
 
-| Document                     | Contents                               |
-|------------------------------|-----------------------------------------|
-| 02-ARCHITECTURE.md           | 7-layer pipeline, 25-module inventory   |
-| 03-AI-SYSTEMS.md             | Markov, RL, quantum glitch deep-dive    |
-| 04-MIDI-OUTPUT.md            | 16 channels, CCs, polyphony             |
-| 05-HARDWARE.md               | 16/12-key controllers + joystick        |
-| 06-DATA-MAPPING.md           | NOAA → music mapping                    |
-| 07-PERFORMANCE.md            | Benchmarks & validation                 |
-| 08-SCIENTIFIC-TRANSPARENCY.md| Verified / theoretical / artistic       |
-
-> **NOTE**  
-> This repository is documentation-only.  
-> The source code and executables are proprietary and are not distributed here.
+Documentation Map
+| Document | Contents |
+| --- | --- |
+| 02-ARCHITECTURE.md | 7-layer pipeline, 25-module inventory |
+| 03-AI-SYSTEMS.md | Markov, RL, quantum glitch deep-dive |
+| 04-MIDI-OUTPUT.md | 16 channels, CCs, polyphony |
+| 05-HARDWARE.md | 16/12-key controllers + joystick |
+| 06-DATA-MAPPING.md | NOAA → music mapping |
+| 07-PERFORMANCE.md | Benchmarks & validation |
+| 08-SCIENTIFIC-TRANSPARENCY.md | Verified / theoretical / artistic |
