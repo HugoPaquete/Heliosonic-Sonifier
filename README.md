@@ -22,6 +22,7 @@
   <img src="https://img.shields.io/badge/docs-8%20files-informational.svg" alt="Docs">
 </p>
 
+
 ---
 
 ## Overview
@@ -47,7 +48,7 @@ creativity, serving as a platform for live performance and data exploration.
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 The full documentation lives in [`docs/`](docs/). Start with the overview, then
 dive into any subsystem.
@@ -65,7 +66,7 @@ dive into any subsystem.
 
 ---
 
-## ✨ Key innovations
+## Key innovations
 
 - **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
 - **Reinforcement learning** — 1,000-entry episodic memory, dynamic learning rate
@@ -77,7 +78,7 @@ dive into any subsystem.
 
 ---
 
-## 🏗️ Architecture at a glance
+## Architecture at a glance
 
 
 ---
@@ -166,12 +167,20 @@ Storm (25) · Bz (26) · Speed (27) · p-mode (70) · g-mode (71) · Sunspot (72
 
 → Full detail: `docs/04-MIDI-OUTPUT.md`
 
-Gallery
-Software
-<!-- Replace with your screenshots -->
+## 🖼️ Gallery
+
+### Software
+
 <p align="center">
-<img src="assets/screenshots/01-main-interface.png" width="48%" alt="Main interface">
-<img src="assets/screenshots/02-solar-visualization.png" width="48%" alt="Solar visualization">
+  <img src="assets/icons/screenshots/Heliosonic%20Sonifier_Main%20Interface_Hugo%20Paquete_2026.png"
+       alt="Heliosonic Sonifier — Main Interface: NOAA data panel, parameters, presets and solar visualization"
+       width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/icons/screenshots/Heliosonic%20Sonifier_Main%20Interface_Hugo%20Paquete_2026%20(2).png"
+       alt="Heliosonic Sonifier — AI Neural Activity monitor with MIDI telemetry overlay"
+       width="100%">
 </p>
 
 Hardware
