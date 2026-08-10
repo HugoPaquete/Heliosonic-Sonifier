@@ -183,12 +183,14 @@ Storm (25) · Bz (26) · Speed (27) · p-mode (70) · g-mode (71) · Sunspot (72
        width="100%">
 </p>
 
-Hardware
-<!-- Replace with your photos -->
+### Hardware Prototypes
+
 <p align="center">
-<img src="assets/hardware/controller-16key.jpg" width="32%" alt="16-key controller">
-<img src="assets/hardware/controller-12key.jpg" width="32%" alt="12-key controller">
-<img src="assets/hardware/joystick.jpg" width="32%" alt="Joystick">
+  <img src="assets/icons/hardware/H16+H12%20Hugo%20Paquete_2026.jpeg"
+       alt="Custom 16-key and 12-key hardware controllers"
+       width="90%">
+  <br>
+  <em>Hand-built research prototypes — HS-16 (left) · HS-12 (right)</em>
 </p>
 
 Demo video
