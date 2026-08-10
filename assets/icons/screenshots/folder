@@ -1,0 +1,22 @@
+<!-- Simple image -->
+![Main Interface](assets/screenshots/01-main-interface.png)
+
+<!-- Centered image with size -->
+<p align="center">
+  <img src="assets/screenshots/01-main-interface.png" 
+       alt="Heliosonic Main Interface" 
+       width="600">
+</p>
+
+<!-- Side-by-side images -->
+<p align="center">
+  <img src="assets/screenshots/01-main-interface.png" width="45%">
+  <img src="assets/screenshots/02-solar-visualization.png" width="45%">
+</p>
+
+<!-- Clickable image (link to larger version) -->
+<p align="center">
+  <a href="assets/screenshots/01-main-interface.png">
+    <img src="assets/screenshots/01-main-interface.png" width="500">
+  </a>
+</p>
