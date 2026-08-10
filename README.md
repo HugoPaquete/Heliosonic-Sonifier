@@ -1,4 +1,4 @@
-<h1 align="center">☀️ Heliosonic Sonifier</h1>
+<h1 align="center"> Heliosonic Sonifier</h1>
 
 <p align="center">
   <b>Real-time NOAA solar wind sonification with AI, reinforcement learning,<br>
