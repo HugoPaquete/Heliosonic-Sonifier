@@ -1,0 +1,70 @@
+# ============================================================
+# Heliosonic Sonifier — documentation-only repository
+# ============================================================
+
+# --- OS-generated files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Editor / IDE files ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# --- Source code & binaries (never distributed) ---
+*.py
+*.pyc
+*.pyo
+__pycache__/
+*.exe
+*.dll
+*.so
+*.dylib
+dist/
+build/
+*.egg-info/
+
+# --- Virtual environments ---
+venv/
+env/
+.venv/
+.env
+
+# --- Large media originals (keep exports, not sources) ---
+*.psd
+*.xcf
+*.ai
+*.sketch
+*.raw
+*.mov
+*.avi
+raw_footage/
+sources/
+
+# --- Local notes & private material ---
+notes-private/
+*.local.md
+TODO-private.md
+
+# --- Logs & temp ---
+*.log
+logs/
+tmp/
+*.tmp
+
+# --- Jupyter (if used for analysis docs) ---
+.ipynb_checkpoints/
