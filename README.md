@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icons/HELIOSONIC%20SONIFIER_128x128.png" alt="Heliosonic Sonifier" width="128">
+</p>
+
 <h1 align="center"> Heliosonic Sonifier</h1>
 
 <p align="center">
