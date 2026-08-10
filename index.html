@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heliosonic Sonifier — Real-Time NOAA Solar Wind Sonification</title>
+<meta name="description" content="Real-time NOAA solar wind sonification with AI, reinforcement learning, and quantum glitch engine. Transforms space weather data into adaptive MIDI music.">
+<meta property="og:title" content="Heliosonic Sonifier">
+<meta property="og:description" content="Real-time NOAA solar wind sonification with AI, reinforcement learning, and quantum glitch engine. Transforms space weather data into adaptive MIDI music.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/icons/HELIOSONIC%20SONIFIER_128x128.png">
+<style>
+:root{
+  --bg:#0A0A0A; --panel:#0D0D0D; --panel2:#1A1A1A; --border:#2A2A2A;
+  --accent:#FF6B00; --accent2:#E74504; --text:#E0E0E0; --sub:#888888; --dim:#555555;
+  --ok:#00AA55; --warn:#FFAA33; --alert:#FF3355; --info:#33AACC;
+  --mono:'Courier New',ui-monospace,SFMono-Regular,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.65;font-size:15px}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--warn)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid var(--border);background:var(--panel)}
+.top{display:flex;align-items:center;gap:16px;padding:22px 0;flex-wrap:wrap}
+.top img{width:64px;height:64px;image-rendering:auto}
+h1{color:var(--accent);font-size:26px;letter-spacing:3px}
+.tag{color:var(--sub);font-size:12px;letter-spacing:2px}
+.badges{padding:0 0 18px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{border:1px solid var(--border);background:var(--panel2);color:var(--sub);
+  font-size:11px;letter-spacing:1px;padding:3px 10px;border-radius:3px}
+.badge b{color:var(--accent)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);z-index:10}
+nav .wrap{display:flex;gap:18px;overflow-x:auto;padding:10px 20px}
+nav a{color:var(--sub);font-size:12px;letter-spacing:1px;white-space:nowrap}
+nav a:hover{color:var(--accent)}
+
+/* ---------- sections ---------- */
+section{padding:56px 0;border-bottom:1px solid var(--border)}
+h2{color:var(--accent);font-size:16px;letter-spacing:2px;margin-bottom:8px}
+h2::before{content:"■ ";color:var(--accent2)}
+.lead{color:var(--sub);max-width:800px;margin-bottom:24px}
+blockquote{border-left:3px solid var(--accent);background:var(--panel);
+  padding:14px 18px;color:var(--sub);font-style:italic;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:16px}
+.card h3{color:var(--accent);font-size:13px;letter-spacing:1px;margin-bottom:8px}
+.card p,.card li{color:var(--sub);font-size:13px}
+.card ul{list-style:none}
+.card li::before{content:"▸ ";color:var(--accent2)}
+
+/* ---------- pipeline ---------- */
+.pipe{display:flex;flex-direction:column;gap:0;max-width:640px}
+.layer{background:var(--panel);border:1px solid var(--border);padding:12px 16px;
+  display:flex;gap:14px;align-items:baseline}
+.layer .n{color:var(--accent);font-weight:bold;font-size:12px;min-width:26px}
+.layer .t{color:var(--text);font-size:13px}
+.layer .d{color:var(--dim);font-size:12px;margin-left:auto;text-align:right}
+.arrow{color:var(--accent2);text-align:center;font-size:14px;line-height:1.2}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;background:var(--panel);
+  border:1px solid var(--border);font-size:13px;margin:14px 0}
+th{color:var(--accent);text-align:left;letter-spacing:1px;font-size:11px;
+  padding:9px 12px;border-bottom:1px solid var(--accent2);background:var(--panel2)}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--sub)}
+td:first-child{color:var(--text)}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .art{color:var(--info)}
+
+/* ---------- gallery ---------- */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.shots figure{background:var(--panel);border:1px solid var(--border);padding:10px;border-radius:4px}
+.shots img{width:100%;display:block;border:1px solid var(--border)}
+.shots figcaption{color:var(--dim);font-size:11px;letter-spacing:1px;padding-top:8px;text-align:center}
+.video{border:1px dashed var(--border);background:var(--panel);color:var(--dim);
+  padding:40px 20px;text-align:center;letter-spacing:2px;font-size:12px;border-radius:4px}
+
+/* ---------- code ---------- */
+pre{background:var(--panel);border:1px solid var(--border);border-radius:4px;
+  padding:16px;overflow-x:auto;font-size:12px;color:var(--sub);margin:14px 0}
+
+/* ---------- footer ---------- */
+footer{padding:36px 0 60px;color:var(--dim);font-size:12px}
+footer .disc{border:1px solid var(--border);background:var(--panel);padding:16px;
+  border-radius:4px;margin-bottom:20px;color:var(--dim)}
+footer b{color:var(--warn)}
+@media (max-width:640px){ .layer .d{display:none} h1{font-size:20px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <img src="assets/icons/HELIOSONIC%20SONIFIER_128x128.png" alt="Heliosonic Sonifier icon">
+      <div>
+        <h1>HELIOSONIC SONIFIER</h1>
+        <div class="tag">NOAA SOLAR WIND → ADAPTIVE MIDI MUSIC · V18.5</div>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge"><b>LICENSE</b> GPL-3.0</span>
+      <span class="badge"><b>VERSION</b> 18.5</span>
+      <span class="badge"><b>PLATFORM</b> Windows 10/11</span>
+      <span class="badge"><b>MIDI</b> 16 CH · 128 POLY</span>
+      <span class="badge"><b>NOAA</b> REAL-TIME</span>
+      <span class="badge"><b>SCALE</b> 18,450 LOC · 25 MODULES</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#overview">OVERVIEW</a><a href="#architecture">ARCHITECTURE</a>
+    <a href="#ai">AI SYSTEMS</a><a href="#mapping">DATA→MUSIC</a>
+    <a href="#midi">MIDI</a><a href="#gallery">GALLERY</a>
+    <a href="#docs">DOCS</a><a href="#transparency">TRANSPARENCY</a>
+    <a href="#citation">CITATION</a><a href="#contact">CONTACT</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="overview">
+  <h2>OVERVIEW</h2>
+  <p class="lead">The <b>Heliosonic Sonifier</b> is a real-time artistic sonification
+  instrument that transforms NOAA/SWPC space-weather data into adaptive MIDI music,
+  bridging scientific data and musical expression through generative AI and
+  computational creativity.</p>
+  <blockquote>"How does solar wind become music? Not through representation, but through
+  resonance. Not through translation, but through transduction."</blockquote>
+  <div class="grid">
+    <div class="card"><h3>MISSION</h3><p>Bridge scientific data with artistic musical
+      expression through generative AI and computational creativity.</p></div>
+    <div class="card"><h3>OPERATION</h3><p>20 Hz real-time engine · 50 ms frame budget ·
+      NOAA refresh every 60 s · latency 245 ms mean.</p></div>
+    <div class="card"><h3>RESEARCH</h3><p>Part of <i>AI as Catalyst</i>
+      (FCT 2024.09158.CEECIND · 2026–2029) · INET-md, University of Aveiro.</p></div>
+  </div>
+</section>
+
+<section id="architecture">
+  <h2>ARCHITECTURE — 7-LAYER PIPELINE</h2>
+  <div class="pipe">
+    <div class="layer"><span class="n">L1</span><span class="t">Acquisition</span><span class="d">NOAA Client (thread) + SQLite Cache (7d)</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L2</span><span class="t">Transformation</span><span class="d">DataMutator · warp / phase / gravity</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L3</span><span class="t">Inertia</span><span class="d">SonicInertia · echo buffer · 50 samples</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L4</span><span class="t">Emotion</span><span class="d">EmotionState · tension / chaos / valence</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L5</span><span class="t">State Machine</span><span class="d">AdaptiveStateManager · 8 states + 4 micro</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L6</span><span class="t">Generation</span><span class="d">MotorC + Markov + Rhythm + Glitch + Ghost</span></div>
+    <div class="arrow">▼</div>
+    <div class="layer"><span class="n">L7</span><span class="t">Output</span><span class="d">MIDIController · 16 channels · 128 polyphony</span></div>
+  </div>
+</section>
+
+<section id="ai">
+  <h2>AI SYSTEMS</h2>
+  <div class="grid">
+    <div class="card"><h3>StateAwareMarkovMelody</h3><ul>
+      <li>3rd-order Markov · 8 states</li><li>~80,000 transitions</li>
+      <li>LRU cache 200 entries · 95% hit</li><li>Genetic algorithms + Perlin + Rule 30</li></ul></div>
+    <div class="card"><h3>AdaptiveMemory (RL)</h3><ul>
+      <li>1,000 episodic entries</li><li>Ensemble of 5 RBF models</li>
+      <li>Dynamic learning rate 2–60%</li><li>Auto-apply ≥ 0.65 confidence</li></ul></div>
+    <div class="card"><h3>GlitchEngine</h3><ul>
+      <li>28 glitch types (quantum + solar)</li><li>Tunnelling P = exp(−2κL)</li>
+      <li>Throttle 10/s · max 3 simultaneous</li></ul></div>
+    <div class="card"><h3>AdaptiveStateManager</h3><ul>
+      <li>8 states + 4 micro-states</li><li>Crossfade 200–500 ms (ADSR)</li>
+      <li>Adaptive hysteresis 0.08–0.20</li><li>≤ 12 transitions / minute</li></ul></div>
+  </div>
+  <pre>R = 0.25(1−T) + 0.20E + 0.20C_opt + 0.20N + 0.15S
+T=tension · E=energy · C_opt=chaotic optimality · N=note diversity · S=state stability</pre>
+</section>
+
+<section id="mapping">
+  <h2>DATA → MUSIC MAPPING</h2>
+  <table>
+    <tr><th>NOAA PARAMETER</th><th>RANGE</th><th>MUSICAL MAPPING</th></tr>
+    <tr><td>Bz (IMF)</td><td>−20 … +20 nT</td><td>Register, tension, scale</td></tr>
+    <tr><td>Solar wind speed</td><td>200–1000 km/s</td><td>Tempo (BPM), rhythm density</td></tr>
+    <tr><td>Proton flux</td><td>0–500 pfu</td><td>Glitch intensity, chaos</td></tr>
+    <tr><td>Electron flux</td><td>0–5000 pfu</td><td>Texture, ambient density</td></tr>
+    <tr><td>Kp index</td><td>0–9</td><td>Chaos level, state transition</td></tr>
+    <tr><td>Alerts (R/S/G)</td><td>0–5</td><td>Emergency states, glitch burst</td></tr>
+  </table>
+</section>
+
+<section id="midi">
+  <h2>MIDI OUTPUT — 16 CHANNELS</h2>
+  <table>
+    <tr><th>CH</th><th>VOICE</th><th>CH</th><th>VOICE</th></tr>
+    <tr><td>1 Drone Bass</td><td>5 Glitch</td><td>9 Pulse</td><td>13 Recalled</td></tr>
+    <tr><td>2 Drone Mid</td><td>6 Chord</td><td>10 Harmonic</td><td>14 Silence</td></tr>
+    <tr><td>3 Drone High</td><td>7 Ambient</td><td>11 Texture</td><td>15 Visible CCs</td></tr>
+    <tr><td>4 Melody</td><td>8 Rhythm</td><td>12 FX</td><td>16 Internal CCs</td></tr>
+  </table>
+  <p class="lead">CC 20–31 (chaos, density, register, glitch, tension, storm, Bz, speed,
+  warp, phase, resonance, tempo) + CC 70–72 helioseismic — modulate any VST in your DAW.</p>
+</section>
+
+<section id="gallery">
+  <h2>GALLERY</h2>
+  <div class="shots">
+    <figure><img src="assets/icons/screenshots/Heliosonic%20Sonifier_Main%20Interface_Hugo%20Paquete_2026.png" alt="Main interface">
+      <figcaption>MAIN INTERFACE — NOAA PANEL + SOLAR VISUALIZATION</figcaption></figure>
+    <figure><img src="assets/icons/screenshots/Heliosonic%20Sonifier_Main%20Interface_Hugo%20Paquete_2026%20%282%29.png" alt="AI monitor">
+      <figcaption>AI NEURAL ACTIVITY MONITOR + MIDI TELEMETRY</figcaption></figure>
+    <figure><img src="assets/icons/hardware/H16+H12%20Hugo%20Paquete_2026.jpeg" alt="Hardware prototypes">
+      <figcaption>HARDWARE PROTOTYPES — HS-16 (LEFT) · HS-12 (RIGHT)</figcaption></figure>
+  </div>
+  <div class="video" style="margin-top:14px">🎬 DEMO VIDEO — COMING SOON</div>
+</section>
+
+<section id="docs">
+  <h2>DOCUMENTATION</h2>
+  <div class="grid">
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/README.md">README</a></h3><p>Front page &amp; overview</p></div>
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/docs/02-ARCHITECTURE.md">02 · ARCHITECTURE</a></h3><p>7-layer pipeline · 25 modules</p></div>
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/docs/03-AI-SYSTEMS.md">03 · AI SYSTEMS</a></h3><p>Markov · RL · quantum glitch</p></div>
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/docs/05-HARDWARE.md">05 · HARDWARE</a></h3><p>16/12-key + joystick mappings</p></div>
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/docs/07-PERFORMANCE.md">07 · PERFORMANCE</a></h3><p>Benchmarks · 97% mapping accuracy</p></div>
+    <div class="card"><h3><a href="https://github.com/hugopaquete/Heliosonic-Sonifier/blob/main/docs/08-SCIENTIFIC-TRANSPARENCY.md">08 · TRANSPARENCY</a></h3><p>Verified / theoretical / artistic</p></div>
+  </div>
+</section>
+
+<section id="transparency">
+  <h2>SCIENTIFIC TRANSPARENCY</h2>
+  <table>
+    <tr><th>MODEL</th><th>STATUS</th><th>ROLE IN SYSTEM</th></tr>
+    <tr><td>p-modes (helioseismic)</td><td class="ok">✅ VERIFIED</td><td>Pitch modulation (vibrato)</td></tr>
+    <tr><td>g-modes (helioseismic)</td><td class="warn">⚠️ THEORETICAL</td><td>Slow temporal modulation</td></tr>
+    <tr><td>Solar cycle (11 yr)</td><td class="ok">✅ VERIFIED</td><td>Long-form structural change</td></tr>
+    <tr><td>Black-hole analogies</td><td class="art">🎨 ARTISTIC</td><td>Data transformation metaphor</td></tr>
+    <tr><td>Quantum mechanics</td><td class="art">🎨 ARTISTIC</td><td>Probabilistic decision-making</td></tr>
+  </table>
+  <p class="lead">This system is an <b>artistic and educational tool</b>, not a scientific
+  simulation. Physical models are metaphors and artistic analogies.</p>
+</section>
+
+<section id="citation">
+  <h2>CITATION</h2>
+  <pre>@software{Paquete2026Heliosonic,
+  author  = {Hugo Paquete and DeepSeek AI},
+  title   = {Heliosonic Sonifier: NOAA Solar Wind Sonification},
+  year    = {2026},
+  version = {18.5},
+  url     = {https://github.com/hugopaquete/Heliosonic-Sonifier},
+  note    = {Funded by FCT 2024.09158.CEECIND and CEEC-FCT 2026-HELIOSONIC}
+}</pre>
+</section>
+
+<section id="contact" style="border-bottom:none">
+  <h2>CONTACT &amp; FUNDING</h2>
+  <div class="grid">
+    <div class="card"><h3>AUTHOR</h3><p>Hugo Paquete ·
+      <a href="https://hugopaquete.com">hugopaquete.com</a> ·
+      <a href="https://github.com/hugopaquete">GitHub</a> ·
+      <a href="https://orcid.org/0000-0002-5844-3678">ORCID</a></p></div>
+    <div class="card"><h3>INSTITUTION</h3><p>INET-md, University of Aveiro ·
+      Absonus Lab · Planetário do Porto – CCV · OTTOsonics</p></div>
+    <div class="card"><h3>FUNDING</h3><p>FCT 2024.09158.CEECIND —
+      <i>AI as Catalyst: Transformative Impacts on Digital Performance,
+      Computational Music, and Cultural Creativity</i> (2026–2029)</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="disc"><b>DISCLAIMER:</b> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+    WARRANTY OF ANY KIND. This is an artistic and educational tool — not intended for
+    scientific research, prediction, or mission-critical applications.
+    © 2026 Hugo Paquete · GPL-3.0</div>
+    HELIOSONIC SONIFIER · HUGO PAQUETE &amp; DEEPSEEK AI · 2026
+  </div>
+</footer>
+
+</body>
+</html>
