@@ -80,3 +80,34 @@ Full detail in 02-ARCHITECTURE.md.
     end
     A --> B --> C --> D --> E --> F --> G
 
+### Research Positioning
+
+The **Heliosonic Sonifier** is part of the **AI as Catalyst** research programme  
+(FCT 2024.09158.CEECIND · 2026–2029).  
+It extends the **AEROSONIC** framework into the heliospheric domain and belongs to a family of interconnected sonifiers:
+
+| Project                | Domain                          |
+|------------------------|----------------------------------|
+| AEROSONIC SONIFIER     | Atmospheric data sonification    |
+| HELIOSONIC SONIFIER    | Solar / heliospheric sonification |
+| CYBER ATTACK SONIFIER  | Cybersecurity threat sonification |
+| GLITCH ECOLOGY         | Ecological data sonification     |
+
+Developed with **INET-md / University of Aveiro**, in collaboration with:  
+**Absonus Lab**, **Planetário do Porto – CCV**, and **OTTOsonics**.
+
+### Documentation Map
+
+| Document                     | Contents                               |
+|------------------------------|-----------------------------------------|
+| 02-ARCHITECTURE.md           | 7-layer pipeline, 25-module inventory   |
+| 03-AI-SYSTEMS.md             | Markov, RL, quantum glitch deep-dive    |
+| 04-MIDI-OUTPUT.md            | 16 channels, CCs, polyphony             |
+| 05-HARDWARE.md               | 16/12-key controllers + joystick        |
+| 06-DATA-MAPPING.md           | NOAA → music mapping                    |
+| 07-PERFORMANCE.md            | Benchmarks & validation                 |
+| 08-SCIENTIFIC-TRANSPARENCY.md| Verified / theoretical / artistic       |
+
+> **NOTE**  
+> This repository is documentation-only.  
+> The source code and executables are proprietary and are not distributed here.
