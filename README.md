@@ -1,2 +1,303 @@
-# Heliosonic-Sonifier
-Real-time NOAA solar wind sonification with AI, reinforcement learning, and quantum glitch engine. Transforms space weather data into adaptive MIDI music.
+<h1 align="center"> Heliosonic Sonifier</h1>
+
+<p align="center">
+  <b>Real-time NOAA solar wind sonification with AI, reinforcement learning,<br>
+  and a quantum-inspired glitch engine. Transforms space weather into adaptive MIDI music.</b>
+</p>
+
+<p align="center">
+  <i>Hugo Paquete & DeepSeek AI · INET-md, University of Aveiro · 2026</i>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></a>
+  <img src="https://img.shields.io/badge/version-18.4-orange.svg" alt="Version">
+  <img src="https://img.shields.io/badge/platform-Windows-blue.svg" alt="Platform">
+  <img src="https://img.shields.io/badge/MIDI-16%20channels-success.svg" alt="MIDI">
+  <img src="https://img.shields.io/badge/NOAA-real--time-brightgreen.svg" alt="NOAA">
+</p>
+
+---
+
+## Overview
+
+**Heliosonic Sonifier** is a real-time artistic sonification instrument that
+transforms **NOAA/SWPC space weather data** into adaptive MIDI music. It bridges
+scientific data and musical expression through generative AI and computational
+creativity — a platform for live performance and data exploration.
+
+> [!IMPORTANT]
+> This is a **research prototype** for academic and artistic purposes. The source
+> code is proprietary and **not distributed**. This repository is documentation
+> and project presentation only.
+
+| Attribute | Value |
+|-----------|-------|
+| **Version** | 18.4 |
+| **Status** | Production-ready research prototype |
+| **Platform** | Windows 10/11 |
+| **Scale** | ~18,450 LOC · 25 modules · 20 autonomous agents |
+| **Operation** | 20 Hz real-time (50 ms frame budget) |
+| **Funding** | CEEC-FCT grant No. 2026-HELIOSONIC |
+
+### Key innovations
+
+- **State-aware Markov chains** — 3rd-order, 8 musical states, ~80,000 transitions
+- **Reinforcement learning** — 1,000-entry episodic memory with dynamic learning rate
+- **Quantum-inspired glitch engine** — tunneling, entanglement, superposition
+- **Black-hole data mutation** — artistic metaphor for data transformation
+- **Helioseismic modulation** — p-modes (3 mHz) and theoretical g-modes
+- **Chandrasekhar-limit rhythm collapse** — stellar physics applied to rhythm
+- **Custom hardware controllers** — 16-key, 12-key, and joystick
+
+---
+
+## Architecture
+
+### 7-layer pipeline
+
+```mermaid
+flowchart TB
+    A["L1 · Acquisition<br/>NOAA Client + SQLite Cache (7d)"] -->
+    B["L2 · Transformation<br/>DataMutator (warp/phase/gravity)"] -->
+    C["L3 · Inertia<br/>SonicInertia (echo buffer, 50 samples)"] -->
+    D["L4 · Emotion<br/>EmotionState (tension/chaos/valence)"] -->
+    E["L5 · State Machine<br/>AdaptiveStateManager (8 states + 4 micro)"] -->
+    F["L6 · Generation<br/>MotorC + Markov + Rhythm + Glitch + Ghost"] -->
+    G["L7 · Output<br/>MIDIController (16 channels, 128 polyphony)"]
+
+```
+### Core Modules (Selection)
+
+| Module                 | LOC   | Responsibility                 |
+|------------------------|-------|--------------------------------|
+| MotorC                 | 2,450 | Central orchestrator           |
+| StateAwareMarkovMelody | 2,100 | 3rd-order Markov generation    |
+| AdaptiveStateManager   | 1,890 | 8-state FSM with crossfade     |
+| DataMutator            | 1,800 | Black-hole data mutation       |
+| GlitchEngine           | 1,650 | Quantum-inspired glitches      |
+| AdaptiveMemory         | 1,450 | Reinforcement learning         |
+| ControlSidebar         | 1,350 | Qt6 interface + NOAA panel     |
+| SolarVisualWidget      | 1,200 | OpenGL visualization           |
+| RhythmEngine           | 720   | Tempo + polyrhythm + collapse  |
+| GhostNoteGenerator     | 680   | Quantum ghost notes            |
+
+→ Full detail: `docs/02-ARCHITECTURE.md`
+
+### AI Systems
+
+| System                 | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| StateAwareMarkovMelody | 3rd-order Markov, 8 states, LRU cache (200 entries, 95% hit rate), genetic algorithms + Perlin noise |
+| AdaptiveMemory         | RL with 1,000 entries × (11 NOAA dims × 10 music dims), ensemble of 5 RBF models, dynamic learning rate |
+| GlitchEngine           | 28 glitch types, throttled to 10/s and 3 simultaneous                       |
+| AdaptiveStateManager   | 8 states + 4 micro-states, 200–500 ms crossfade, adaptive hysteresis        |
+| HelioseismicModulator  | p-mode/g-mode pitch & timing modulation                                     |
+
+#### Reward Function
+
+R = 0.25(1−T) + 0.20E + 0.20C_opt + 0.20N + 0.15S  
+(T = tension · E = energy · C_opt = chaotic optimality · N = note diversity · S = state stability)
+
+→ Full detail: `docs/03-AI-SYSTEMS.md`
+
+### Data Sources → Music
+
+| NOAA Parameter      | Range            | Musical Mapping                     |
+|---------------------|------------------|-------------------------------------|
+| Bz (IMF)            | −20 … +20 nT     | Register, tension, scale            |
+| Solar wind speed    | 200–1000 km/s    | Tempo (BPM), rhythm density         |
+| Proton flux         | 0–500 pfu        | Glitch intensity, chaos             |
+| Electron flux       | 0–5000 pfu       | Texture, ambient density            |
+| Kp index            | 0–9              | Chaos level, state transition       |
+| Alerts (R/S/G)      | 0–5              | Emergency states, glitch burst      |
+
+→ Full detail: `docs/06-DATA-MAPPING.md`
+
+### Musical Output
+
+**16 MIDI channels · 128-note polyphony**
+
+| CH | Voice        | CH | Voice         |
+|----|--------------|----|---------------|
+| 1  | Drone bass   | 9  | Pulse         |
+| 2  | Drone mid    | 10 | Harmonic      |
+| 3  | Drone high   | 11 | Texture       |
+| 4  | Melody       | 12 | FX            |
+| 5  | Glitch       | 13 | Recalled      |
+| 6  | Chord        | 14 | Silence       |
+| 7  | Ambient      | 15 | Visible CCs   |
+| 8  | Rhythm       | 16 | Internal CCs  |
+
+### Control Change Messages (Channel 15)
+
+Chaos (20) · Density (21) · Register (22) · Glitch (23) · Tension (24) ·  
+Storm (25) · Bz (26) · Speed (27) · p-mode (70) · g-mode (71) · Sunspot (72)
+
+→ Full detail: `docs/04-MIDI-OUTPUT.md`
+
+Gallery
+Software
+<!-- Replace with your screenshots -->
+<p align="center">
+<img src="assets/screenshots/01-main-interface.png" width="48%" alt="Main interface">
+<img src="assets/screenshots/02-solar-visualization.png" width="48%" alt="Solar visualization">
+</p>
+
+Hardware
+<!-- Replace with your photos -->
+<p align="center">
+<img src="assets/hardware/controller-16key.jpg" width="32%" alt="16-key controller">
+<img src="assets/hardware/controller-12key.jpg" width="32%" alt="12-key controller">
+<img src="assets/hardware/joystick.jpg" width="32%" alt="Joystick">
+</p>
+
+Demo video
+🚧 Coming soon — a full performance demonstration will be added here.
+<!-- When ready, replace with:
+<p align="center">
+<a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID">
+<img src="assets/media/video-thumbnail.png" width="640" alt="Demo video">
+</a>
+</p>
+-->
+
+### Performance
+
+| Metric                       | Value   | Target   | Status |
+|------------------------------|---------|----------|--------|
+| Avg frame time               | 8.34 ms | < 10 ms  | ✅     |
+| P95 frame time               | 12.34 ms| < 15 ms  | ✅     |
+| NOAA → MIDI latency (mean)   | 245 ms  | < 300 ms | ✅     |
+| NOAA → MIDI latency (p95)    | 345 ms  | < 500 ms | ✅     |
+| MIDI clock jitter            | 0.29 ms | < 0.5 ms | ✅     |
+| Peak notes/second            | 47      | > 30     | ✅     |
+| Glitch drop rate             | 0.3%    | < 1%     | ✅     |
+
+**Mapping accuracy:** 97.0% overall ✅
+
+→ Full detail: `docs/07-PERFORMANCE.md`
+
+### Scientific Transparency — A Computer Music Perspective
+
+The Heliosonic Sonifier employs scientific concepts not as simulations but as **generative constraints** and **compositional heuristics** — a practice well-established in computer music discourse. As I have articulated in the AI as Catalyst research framework, the system operates through a distinction between:
+
+- **Representation**: Data is translated into sound through 1:1 mapping; the composer controls the mapping.
+- **Resonance**: Data is metabolized by the system through 1:N transduction; the composer curates emergence.
+
+This distinction is fundamental to understanding why the scientific references in the Heliosonic Sonifier are metaphorical rather than literal. The system does not ask: *"What does a p-mode sound like?"* It asks: *"How does a p-mode reorganize the internal state of the computational organism?"* — a formulation grounded in the AI-Chimera's ontogenetic architecture:
+
+X = {B, M, A, E, Be}
+
+
+Where **Body** = operational materiality, **Metabolism** = interpretative transduction, **Environment** = ontological condition, **States** = internal tensions, and **Emergent Behavior** = dynamic manifestation.
+
+| Model | Status | Role in Heliosonic Sonifier | Application |
+|-------|--------|----------------------------|-------------|
+| **p-modes (helioseismic)** | ✅ VERIFIED | Pitch modulation (vibrato) at 3 mHz (333s period) | StateAwareMarkovMelody breathes with solar oscillations |
+| **g-modes (helioseismic)** | ⚠️ THEORETICAL | Slow temporal modulation (~5000s period) | Artistic speculation — not empirically confirmed |
+| **Solar cycle (11 years)** | ✅ VERIFIED | Long-form structural change | Temporal scaffolding for large-scale musical evolution |
+| **Black hole analogies** | 🎨 ARTISTIC METAPHOR | Data transformation thresholds, reset mechanisms | Event horizon → warp+scramble triggers singularity |
+| **Quantum mechanics** | 🎨 ARTISTIC METAPHOR | Probabilistic decision-making, coupled ghost notes | Tunneling, entanglement, superposition as generative constraints |
+
+**Status Legend:**
+- ✅ **VERIFIED** = Scientifically established; used as structural inspiration
+- ⚠️ **THEORETICAL** = Hypothetical, not confirmed; used as artistic speculation
+- 🎨 **ARTISTIC METAPHOR** = Computational metaphor; not a scientific simulation
+
+### The Computer Music Tradition of Scientific Metaphor
+
+This approach participates in a distinguished tradition within computer music — what French composer Jean-Claude Risset termed *"the poetic appropriation of scientific models"*:
+
+| Composer/Researcher | Scientific Reference | Musical Application |
+|---------------------|----------------------|---------------------|
+| **Iannis Xenakis** (1971) | Stochastic physics, gas theory | Probability-based composition |
+| **Curtis Roads** (2001) | Particle physics | Granular synthesis paradigm |
+| **Miller Puckette** (1996) | State machines | Real-time control architecture |
+| **Hugo Paquete** (2026) | Quantum mechanics, black hole physics | 1:N transduction, probabilistic collapse, generative constraints |
+
+### The Resonant Framework
+
+The Heliosonic Sonifier operationalizes what I term **digital resonance** — the phenomenon in which a computational system's internal states oscillate at specific frequencies in response to environmental forcing, producing emergent behaviors through algorithmic coupling rather than representational mapping.
+
+This is formalized as:
+
+d²S/dt² + Γ·dS/dt + Ω²·S = F(A(t))
+
+
+Where:
+- **S(t)** = The system's sonic state vector (MIDI parameters)
+- **Γ** = The damping matrix (emotional decay)
+- **Ω** = The natural frequency matrix (CALM, TENSE, STORM, CHAOS)
+- **F(A(t))** = The environmental forcing function (NOAA data)
+
+### Why This Matters
+
+The Heliosonic Sonifier is an **artistic and educational tool** — not a scientific instrument. Its value lies not in simulating physics but in:
+
+1. **Operationalizing scientific concepts as compositional constraints** — generating musical material through algorithmic resonances
+2. **Cultivating meta-listening** — a reflexive auditory practice that interrogates the conditions under which listening is mediated, governed, and automated
+3. **Contributing to sonic infrastructuralism** — a practice of infrastructural critique through vibrational modulation
+
+As I have argued in my recent work:
+
+> "The shift from representation to resonance — from translation to transduction — is the theoretical and practical contribution of this research. The system does not ask: *'What sound corresponds to this data point?'* It asks: *'How does this data pattern reorganize the internal state of the computational organism?'*"
+
+### Critical Reflection
+
+The use of scientific metaphor in computer music is not without risks. When I describe the system's "quantum collapse," I refer to a specific computational process — probabilistic selection from a set of latent states — not to a mysterious or inexplicable phenomenon. The metaphor should illuminate, not obscure.
+
+The Heliosonic Sonifier's scientific transparency is therefore not an afterthought but an integral part of the work — a form of what I term **meta-listening** applied to the system's own architecture.
+
+---
+
+*This project is part of the research project "AI as Catalyst: Transformative Impacts on Digital Performance, Computational Music, and Cultural Creativity" (FCT 2024.09158.CEECIND).*
+
+### Research Ecosystem
+
+Part of the **AI as Catalyst** research programme  
+(FCT 2024.09158.CEECIND · 2026–2029), extending the AEROSONIC framework into the heliospheric domain:
+
+- **AEROSONIC SONIFIER** — atmospheric data sonification  
+- **HELIOSONIC SONIFIER** — solar / heliospheric data sonification  
+- **CYBER ATTACK SONIFIER** — cybersecurity threat sonification  
+- **GLITCH ECOLOGY** — ecological data sonification  
+
+Developed with **INET-md / University of Aveiro**, in collaboration with:  
+Absonus Lab · Planetário do Porto – CCV · OTTOsonics
+
+
+### Citation
+
+@software{Paquete2026Heliosonic,
+  author  = {Hugo Paquete and DeepSeek AI},
+  title   = {Heliosonic Sonifier: NOAA Solar Wind Sonification},
+  year    = {2026},
+  version = {18.4},
+  url     = {https://github.com/hugopaquete/Heliosonic-Sonifier},
+  note    = {Funded by CEEC-FCT grant No. 2026-HELIOSONIC}
+}
+
+
+### License
+
+**GNU General Public License v3.0 — © 2026 Hugo Paquete**
+
+✅ Permitted: academic research, artistic creation, education  
+❌ Prohibited: commercial use without permission, reverse engineering, AI training without permission
+
+
+### Contact
+
+Author: Hugo Paquete — https://hugopaquete.com  
+GitHub: @hugopaquete  
+Institution: INET-md, University of Aveiro
+
+
+[!WARNING]
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+This is an artistic and educational tool — not intended for scientific research,
+prediction, or mission-critical applications.
+Physical models (quantum, black hole, g-modes) are metaphors and artistic
+analogies, not simulations.
+
